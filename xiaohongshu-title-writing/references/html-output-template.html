@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>小红书标题方案 · {{VIDEO_TOPIC}}</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      padding: 40px 20px 80px;
+    }
+
+    .page-header {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .page-header .subtitle {
+      color: #6e6e73;
+      font-size: 15px;
+    }
+
+    .key-points {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .key-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 14px;
+      color: #3a3a3c;
+    }
+
+    .key-point::before {
+      content: "✦";
+      color: #ff2442;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .section-label {
+      max-width: 900px;
+      margin: 0 auto 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #6e6e73;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cards {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,.10);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px 12px;
+      border-bottom: 1px solid #f2f2f7;
+    }
+
+    .card-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ff2442;
+      background: #fff0f2;
+      padding: 2px 9px;
+      border-radius: 20px;
+    }
+
+    .formula-tag {
+      font-size: 11px;
+      color: #8e8e93;
+      background: #f2f2f7;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    .cover-preview {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      margin: 14px 18px;
+      border-radius: 12px;
+      padding: 20px 18px;
+      min-height: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .cover-line {
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0.5px;
+    }
+
+    .cover-label {
+      font-size: 10px;
+      color: rgba(255,255,255,.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .card-title-section {
+      padding: 0 18px 12px;
+    }
+
+    .card-title-label {
+      font-size: 10px;
+      color: #8e8e93;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .card-title-text {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: #1d1d1f;
+    }
+
+    .analysis {
+      border-top: 1px solid #f2f2f7;
+      padding: 12px 18px 16px;
+    }
+
+    .analysis-label {
+      font-size: 10px;
+      color: #8e8e93;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .analysis-text {
+      font-size: 13px;
+      color: #3a3a3c;
+      line-height: 1.65;
+    }
+
+    .card.recommended .card-num {
+      background: #ff2442;
+      color: #fff;
+    }
+
+    .recommended-badge {
+      font-size: 11px;
+      color: #ff2442;
+      font-weight: 600;
+    }
+
+    .summary {
+      max-width: 900px;
+      margin: 40px auto 0;
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .summary h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .summary-block h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ff2442;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .summary-block ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .summary-block li {
+      font-size: 13px;
+      color: #3a3a3c;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .summary-block li .num {
+      font-weight: 700;
+      color: #1d1d1f;
+      background: #f2f2f7;
+      padding: 1px 7px;
+      border-radius: 10px;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 600px) {
+      .cards { grid-template-columns: 1fr; }
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!--
+  PLACEHOLDERS:
+  {{VIDEO_TOPIC}}        视频主题，如 "MiniMax M2.7 × OpenClaw 使用场景"
+  {{SUBTITLE}}           副标题，如 "20组封面文字 + 标题"
+  {{KEY_POINT_n}}        脚本核心卖点（n = 1~4，可增减 .key-point 块）
+  {{CARD_COUNT}}         卡片总数，如 "20组"
+
+  每张卡片字段：
+  - class="card" 普通卡片 / class="card recommended" 推荐卡片
+  - {{CARD_NUM}}         序号 01 / 02 ...
+  - {{RECOMMENDED_BADGE}} 推荐卡片加 <span class="recommended-badge">⭐ 推荐</span>，否则省略
+  - {{FORMULA_TAG}}      公式标签，如 "好奇悬念 · 消极偏见"
+  - {{COVER_LINE_n}}     封面文字行（2~4行，多余的 div 直接删掉）
+  - {{TITLE_TEXT}}       完整标题文案
+  - {{ANALYSIS_TEXT}}    原理分析说明
+
+  综合推荐区：
+  - {{TOP_PICKS}}        <li><span class="num">编号</span>说明</li> × N
+  - {{BY_FOCUS}}         <li><span class="num">编号</span>说明</li> × N
+-->
+
+<div class="page-header">
+  <h1>小红书标题方案</h1>
+  <p class="subtitle">{{VIDEO_TOPIC}} · {{SUBTITLE}}</p>
+</div>
+
+<div class="key-points">
+  <div class="key-point">{{KEY_POINT_1}}</div>
+  <div class="key-point">{{KEY_POINT_2}}</div>
+  <div class="key-point">{{KEY_POINT_3}}</div>
+  <div class="key-point">{{KEY_POINT_4}}</div>
+</div>
+
+<div class="section-label">标题方案 · {{CARD_COUNT}}</div>
+
+<div class="cards">
+
+  <!-- ===== CARD (复制此块，按需增减) ===== -->
+  <div class="card"><!-- 推荐卡片改为 class="card recommended" -->
+    <div class="card-header">
+      <span class="card-num">{{CARD_NUM}}</span>
+      <!-- 推荐卡片在此加: <span class="recommended-badge">⭐ 推荐</span> -->
+      <span class="formula-tag">{{FORMULA_TAG}}</span>
+    </div>
+    <div class="cover-preview">
+      <div class="cover-label">封面文字</div>
+      <div class="cover-line">{{COVER_LINE_1}}</div>
+      <div class="cover-line">{{COVER_LINE_2}}</div>
+      <div class="cover-line">{{COVER_LINE_3}}</div><!-- 可选，不需要则删除 -->
+    </div>
+    <div class="card-title-section">
+      <div class="card-title-label">标题</div>
+      <div class="card-title-text">{{TITLE_TEXT}}</div>
+    </div>
+    <div class="analysis">
+      <div class="analysis-label">原理分析</div>
+      <div class="analysis-text">{{ANALYSIS_TEXT}}</div>
+    </div>
+  </div>
+  <!-- ===== END CARD ===== -->
+
+</div>
+
+<div class="summary">
+  <h2>综合推荐</h2>
+  <div class="summary-grid">
+    <div class="summary-block">
+      <h3>优先测试</h3>
+      <ul>
+        {{TOP_PICKS}}
+      </ul>
+    </div>
+    <div class="summary-block">
+      <h3>按内容侧重选择</h3>
+      <ul>
+        {{BY_FOCUS}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

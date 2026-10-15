@@ -1,0 +1,24 @@
+# Local metadata and editor files
+.DS_Store
+._*
+.idea/
+.vscode/
+*.swp
+
+# Local credentials and environment configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Generated skill output
+**/output/
+
+# Dependencies, caches and logs
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.cache/
+*.log
